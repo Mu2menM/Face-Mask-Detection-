@@ -16,3 +16,7 @@ venv/
 
 # Data
 data/
+
+.idea
+
+notebooks/kaggle.json
