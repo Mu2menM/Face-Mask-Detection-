@@ -15,10 +15,10 @@ Die automatische Erkennung von Maskenträgern spielt eine wichtige Rolle in öff
 * Automatischer Download und Strukturierung eines Face-Mask-Datensatzes (via Kaggle)
 * Vorverarbeitung und Visualisierung von Bildern
 * Ein eigenes CNN-Modell mit Hyperparameter-Tuning
+* Ein MobileNetV2 Modell mit Hyperparameter-Tuning
 * Vergleich mehrerer Modellvarianten
 * Auswertung mit Accuracy, Precision, Recall, F1-Score
 * Visualisierung von Trainingsverläufen
-* Einsatz von Grad-CAM (optional) zur Modell-Erklärbarkeit
 
 ---
 
@@ -53,9 +53,9 @@ Das Projekt enthält ein Jupyter Notebook mit folgendem typischen Ablauf:
 1. **Daten herunterladen**: Das Skript lädt den Datensatz automatisch via `kagglehub.dataset_download(...)`, sofern `Train/` noch nicht existiert.
 2. **Daten visualisieren**: Beispielbilder werden mit `matplotlib` dargestellt.
 3. **Daten augmentieren**: `keras.Sequential` mit zufälliger Flip-, Zoom-, Rotations-Transformation.
-4. **Modelle bauen**: Über `build_cnn(...)` werden Varianten parametrisiert erstellt.
-5. **Training**: Drei Modellvarianten (`A_small`, `B_medium`, `C_large`) werden über eine Schleife trainiert.
-6. **Evaluation**: Beste Variante wird auf Testdaten ausgewertet.
+4. **Modelle bauen**: Über `build_cnn(...)` und `build_mobilenet(...)` werden Varianten parametrisiert erstellt.
+5. **Training**: Sechs Modellvarianten (`A_small`, `B_medium`, `C_large`, `D_mobilenet_small`, `E_mobilenet_medium`, `F_mobilenet_large`) werden über eine Schleife trainiert.
+6. **Evaluation**: Beste Varianten von CNN und MobileNet wird auf Testdaten ausgewertet.
 7. **Visualisierung**: Accuracy über Epochen wird geplottet.
 
 Optional kannst du auch nur eine einzelne Variante trainieren, z. B.:
@@ -117,12 +117,6 @@ Hyperparameter (über `VARIANTS` definiert):
 * Vergleich der `val_accuracy` zur Modellwahl
 
 ---
-
-## Weiteres (optional)
-
-* Grad-CAM Visualisierung zur Explainability (in Notebook erweiterbar)
-* TensorBoard-Support
-* Transfer Learning (MobileNetV2) als Erweiterung möglich
 
 ---
 
